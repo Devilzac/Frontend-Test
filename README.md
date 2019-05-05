@@ -1,4 +1,4 @@
-# ASG1
+# Ex 1
 
 Install dependencies `npm i`
 
