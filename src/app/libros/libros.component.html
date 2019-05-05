@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="search">
+    <input type="text" #search (keyup)="searchBook(search.value)" placeholder="Search">
+  </div>
+  <div class="cntainer row" *ngFor="let lib of libros?.docs | paginate:{itemsPerPage:4, currentPage: pageActual}">
+    <div class="cover col-lg-2 col-md-4 col-12"><img *ngIf="lib.cover_i" src="http://covers.openlibrary.org/b/id/{{lib.cover_i}}-L.jpg"
+        alt="{{lib.title}}"></div>
+    <div class="info col-lg-10 col-md-8 col-12">
+      <div class="autor col-12">
+        <img *ngIf="lib.author_key" src="https://covers.openlibrary.org/a/olid/{{lib.author_key}}-M.jpg"
+          alt="{{lib.author_name}}" class="">
+        <span class="" *ngIf="lib.author_name">Author: {{lib.author_name}}</span>
+      </div>
+        <h1 class="title col-12" *ngIf="lib.title">Title: {{lib.title}}</h1>
+        <span class="year col-12" *ngIf="lib.first_publish_year">Year: {{lib.first_publish_year}}</span>
+        <span class="excerpt col-12"></span>
+        <span class="subject col-12" *ngIf="lib.subject">Subject: {{lib.subject}} </span>        
+        <select class="isbn col-12" *ngIf="lib.isbn">
+            <option *ngFor="let isbn of lib?.isbn">
+                ISBN: {{isbn}}
+            </option>
+          </select>
+        <select class="edition col-12" *ngIf="lib.edition_key">          
+          <option *ngFor="let edition of lib?.edition_key">
+              Edition: {{edition}}
+          </option>
+        </select>      
+    </div>
+  </div>
+  <pagination-controls class="pag" (pageChange)="pageActual = $event"></pagination-controls>
+</div>

@@ -1,0 +1,65 @@
+@import '../_variables';
+
+.search{
+    text-align: center;
+}
+.cntainer{
+    background: $bg-white;
+    .cover{
+        border:solid 1px;
+        padding: 0;
+        img{
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    .info{
+        border:solid 1px;
+        span{
+            display: block;
+        }
+        .autor{
+            span{
+                display: inline-block;
+                padding-left: 15px;
+            }
+            img{                
+                max-height: 150px;
+                object-fit: cover;
+            }
+        }
+        .title{
+            font-size: $title-size;
+        }
+        .subject, .edition, .excerpt, .year, .isbn{
+            font-size: $info-size;      
+            overflow: hidden;
+            white-space: initial;
+            text-overflow: ellipsis;    
+        }
+        .isbn, .edition{
+            span{
+                display: inline-block;
+                &:hover{
+                    font-weight: bold;
+                }
+            }        
+        } 
+        .extra-info{
+            max-height: 100px;
+            overflow: auto;
+        }    
+    }
+}
+
+.pag{
+    text-align: center;
+}
+
+@media only screen and (max-width: 400px) {    
+    .cntainer{
+        .cover{
+            display:none;
+        }
+    }
+}
